@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react'
+import baseUrl from '../libs/Constants.js'
 
-const ApiFetch = () => {
+const FetchThread = (props) => {
 
     const [threads, setThreads] = useState([]);
-    const baseUrl = "https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com"
+    const locationApi = `/threads?offset=${props.offset}`;
 
     useEffect(() => {
-        fetch(baseUrl + "/threads", {method:"GET"})
+        fetch(baseUrl + locationApi, {method:"GET"})
         .then(res => res.json())
         .then(
           result => {
@@ -16,18 +17,16 @@ const ApiFetch = () => {
             console.log(error)
           },
         )
-    })
+    }, [])
   
 
     return (
         <div>
-            <ul>
-                {
-                    threads.map(thread => <li key={thread.id}>{thread.title}</li>)
-                }
-            </ul>
+            {
+                threads.map(thread => <a href={thread.id}>{thread.title}<br></br></a>)
+            }
         </div>
     )
 }
 
-export default ApiFetch
+export default FetchThread
