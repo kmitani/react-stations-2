@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import baseUrl from '../libs/Constants.js'
+import { useHistory } from 'react-router-dom';
 
 const CreateThread = () => {
 
     const [formData, setFormData] = useState({ title: '' });
     const locationApi = "/threads";
+    const history = useHistory();
 
     const handleSubmit = (event) => {
         console.log(formData.title)
@@ -19,7 +21,10 @@ const CreateThread = () => {
           body: request
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data);
+            history.push('/');
+        })
         .then(error => console.log(error))
     };
 
