@@ -1,6 +1,12 @@
 .App {
   text-align: center;
 }
+div  {
+  margin : 30px ;
+  padding : 5px ;
+  border : 1px solid ;
+  background-color : white ;
+} 
 
 .App-logo {
   height: 40vmin;
