@@ -37,8 +37,10 @@ const CreateThread = () => {
     return (
         <div>
             <h2>スレッド新規作成</h2>
-            <input type="text" name="title" value={formData.title} onChange={handleChange} />
-            <button type="submit" onClick={handleSubmit} >Submit</button>
+            <form onSubmit={handleSubmit}>
+            <input type="text" name="title" required minLength={1} value={formData.title} onChange={handleChange} />
+            <button type="submit">作成</button>
+            </form>
             <a href="/">Topに戻る</a>
         </div>
     )
