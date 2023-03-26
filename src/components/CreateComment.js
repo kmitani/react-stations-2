@@ -9,7 +9,6 @@ const CreateComment = () => {
 
     const handleSubmit = (event) => {
         var request = JSON.stringify(formData);
-        console.log(request);
         event.preventDefault();
         fetch(baseUrl + locationApi, {
           method:"POST",
@@ -35,8 +34,10 @@ const CreateComment = () => {
     return (
         <div>
             <h2>コメント新規作成</h2>
-            <input type="text" name="post" value={formData.post} onChange={handleChange} />
-            <button type="submit" onClick={handleSubmit} >Submit</button>
+            <form onSubmit={handleSubmit}>
+            <input type="text" name="post" value={formData.post} onChange={handleChange} required minLength={1}/>
+            <button type="submit">Submit</button>
+            </form>
         </div>
     )
 }
